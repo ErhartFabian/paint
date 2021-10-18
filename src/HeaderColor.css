@@ -1,0 +1,18 @@
+.menu{
+    display:flex;
+    justify-content:space-between;
+    align-items: center;
+    background-color: #40B7F2;
+    box-sizing: border-box;
+    margin: 10px;
+    border-radius: 10px;
+    height:15vh;
+}
+
+#menuLeft button{
+    margin: 10px;
+    border-radius: 30px;
+}
+ul{
+    box-sizing: border-box;
+}

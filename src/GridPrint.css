@@ -1,0 +1,29 @@
+#Grid{
+    display: flex;
+    justify-content:center;
+
+}
+#GridLeft{
+    width: 500px;
+    height: 500px;
+    border: 1px solid black;
+    margin: 50px 300px 0px 0px;
+    
+}
+#GridRight{
+    width: 500px;
+    height: 500px;
+    border: 1px solid black;
+    margin: 50px 10px 0px 0px;;
+    display: grid;
+    grid-template-columns: repeat(10, 50px);
+    grid-template-rows: repeat(10, 50px);
+}
+.square{
+    width: 50px;
+    height: 50px;
+    padding:0px;
+    border: 1px solid black;
+    box-sizing: border-box;
+    
+}
