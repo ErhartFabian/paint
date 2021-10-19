@@ -1,7 +1,7 @@
 #Grid{
     display: flex;
     justify-content:center;
-
+    align-items: center;
 }
 #GridLeft{
     width: 500px;
@@ -26,4 +26,9 @@
     border: 1px solid black;
     box-sizing: border-box;
     
+}
+
+#plantillas{
+    display: flex;
+    flex-direction: column;
 }

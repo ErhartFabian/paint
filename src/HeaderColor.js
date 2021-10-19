@@ -14,7 +14,7 @@ function HeaderColor(props) {
   const newgame = () =>{
    props.setGridState(props.grid); 
    props.setSelected(false);
-   props.img.current.remove();
+   /* props.img.current.remove(); */
    // !!!!!!!!!!!!!revisar porque en segunda impresion no jala
 }
 
@@ -22,10 +22,13 @@ function HeaderColor(props) {
     function print(){
     props.setSelected(true);
     setTimeout(()=>{html2canvas(props.ss.current).then(canvas => {
-      props.img.current.appendChild(canvas)
+      
+      props.img.current.innerHTML = "";
+      props.img.current.appendChild(canvas);
     });},10)
   }
 
+    
 
   return (
     <div className="menu">
