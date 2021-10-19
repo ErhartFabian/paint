@@ -36,7 +36,7 @@ function HeaderColor(props) {
       <div id="menuRight">
       <Button onClick={newgame} variant="contained" className="st"
       sx={{
-          height:60,
+          height:40,
           marginRight:4,
           marginLeft:2,
           borderRadius:3,
@@ -44,13 +44,13 @@ function HeaderColor(props) {
       >New Game</Button>
       <Button onClick={print}  variant="contained"
       sx={{
-        height:60,
+        height:40,
         marginRight:4,
         borderRadius:3,
     }}
       >Print</Button>
       </div>
-        <h1>Choose color to start painting:</h1>
+        <h3>Choose color to start painting:</h3>
 
       <div id="menuLeft" >
         <ul style={{display: 'flex', listStyle:'none'}}>
@@ -68,8 +68,8 @@ function HeaderColor(props) {
                       onClick={handleClick} 
                       name={color} 
                       style={{
-                          width:'70px', 
-                          height: '70px', 
+                          width:'50px', 
+                          height: '50px', 
                           border: borderStyle,
                           color: 'white', 
                           background: color,

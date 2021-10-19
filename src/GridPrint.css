@@ -4,24 +4,24 @@
     align-items: center;
 }
 #GridLeft{
-    width: 500px;
-    height: 500px;
+    width: 400px;
+    height: 400px;
     border: 1px solid black;
     margin: 50px 300px 0px 0px;
     
 }
 #GridRight{
-    width: 500px;
-    height: 500px;
+    width: 400px;
+    height: 400px;
     border: 1px solid black;
     margin: 50px 10px 0px 0px;;
     display: grid;
-    grid-template-columns: repeat(10, 50px);
-    grid-template-rows: repeat(10, 50px);
+    grid-template-columns: repeat(10, 40px);
+    grid-template-rows: repeat(10, 40px);
 }
 .square{
-    width: 50px;
-    height: 50px;
+    width: 40px;
+    height: 40px;
     padding:0px;
     border: 1px solid black;
     box-sizing: border-box;
