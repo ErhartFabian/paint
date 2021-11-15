@@ -7,6 +7,7 @@ function GridPrint (props){
 
     const color = props.selectedColor; // color que proviene del padre
     const [mouseDown, setMouseDown] = useState(false); // estado para saber cuando el mouse esta presionado
+        
     
     const updateGrid = (event) =>{ // actualizar la tabla
       props.setGridState(
@@ -18,7 +19,6 @@ function GridPrint (props){
         )
       )    
     }
-//comentariio
     const  handleHover = (event) =>{
         if(!mouseDown) return 
         updateGrid(event)
@@ -27,16 +27,23 @@ function GridPrint (props){
     const handleMouseDown = (event) => {
       setMouseDown(true);
       updateGrid(event);
+      // alerta si no hay color seleccionado
+      if(props.selectedColor === 'white'){
+        alert('Seleccione un color')
+      }
     }
     
     const handleMouseUp = () => {
       setMouseDown(false);
       
     }
+    
     let arrayestrella = [5,6,14,15,16,17,23,24,25,26,27,28,32,33,34,35,36,
                     37,38,39,41,42,43,44,45,46,47,48,49,50,51,52,53,
                     54,55,56,57,58,59,60,62,63,64,65,66,67,68,69,73,
                     74,75,76,77,78,84,85,86,87,95,96];
+
+    
 
     let arraycaritafeliz = [22,23,28,29,32,33,38,39,52,59,63,64,65,66,67,68];
 
@@ -89,7 +96,7 @@ function GridPrint (props){
                 <div  ref={props.img}>
                 </div>
             </div>
-
+            
             <div id="plantillas">
             <Button onClick={caritafeliz} variant="contained" className="st"
                sx={{
