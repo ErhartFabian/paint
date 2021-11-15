@@ -1,31 +1,55 @@
 import './HeaderColor.css';
-import React from 'react';
+import React,{useEffect, useState} from 'react';
 import Button from '@mui/material/Button';
 import html2canvas from 'html2canvas';
+import axios from 'axios';
+
+
 
 function HeaderColor(props) {
 
-  const colors = ['#264653','#2A9D8F','#E9C46A','#F4A261','#E76F51','#D63230','#AFBBF2']; 
-   
-  const handleClick = (event) =>{
-    props.setSelectedColor(event.target.name);
-  }
+  var [colors,setColors] = useState([]);
+  
+    // si color no esta seleccionado mandar mensaje de seleccionar color
+    useEffect(() => {
+      axios.get(`https://www.colr.org/json/colors/random/7`)   
+      .then(res => {
+      var newcolors =[];
+            //añadir los colores a un array
+      for(var i = 0; i < 7; i++){
+        newcolors.push("#"+ res.data.colors[i].hex);
+      }
+      setColors(newcolors);
+      
+      })
+      .catch(err   => {
+        console.log(err);
+      });
+        //mensaje de seleccionar color
+        alert("Selecciona un color");
+      
+    },[]);
+      
+
+
 
   const newgame = () =>{
    props.setGridState(props.grid); 
    props.setSelected(false);
-   /* props.img.current.remove(); */
-   // !!!!!!!!!!!!!revisar porque en segunda impresion no jala
-}
+  }
 
 
-    function print(){
+  async function print (){
     props.setSelected(true);
     setTimeout(()=>{html2canvas(props.ss.current).then(canvas => {
       
       props.img.current.innerHTML = "";
       props.img.current.appendChild(canvas);
-    });},10)
+    });},100)
+  }
+
+  const handleClick = (event) =>{
+    props.setSelectedColor(event.target.name);
   }
 
     
@@ -55,32 +79,33 @@ function HeaderColor(props) {
       <div id="menuLeft" >
         <ul style={{display: 'flex', listStyle:'none'}}>
             {/* seleccionar un color */}
-            {colors.map((color) => {
-              const isSelected = color === props.selectedColor;
-              const borderStyle = isSelected ? '5px solid #66abf4':'2px solid #FFFFFF'
+            {colors.map( (color) => {
             
-              return (
-                  
-
-                  <button 
-                      key={color}
-                      type="button" 
-                      onClick={handleClick} 
-                      name={color} 
-                      style={{
-                          width:'50px', 
-                          height: '50px', 
-                          border: borderStyle,
-                          color: 'white', 
-                          background: color,
-                      }}
-                  >          
-
-                  {/* {color} */}
+            
+              const isSelected = color === props.selectedColor;
+              const borderStyle = isSelected ? '5px solid #66abf4':'2px solid #FFFFFF';
               
-                  </button>
-              )
-          
+                return(
+                  <button 
+                        key={color}
+                        type="button" 
+                        onClick={handleClick} 
+                        name={color} 
+                        style={{
+                            width:'50px', 
+                            height: '50px', 
+                            border: borderStyle,
+                            color: 'white', 
+                            background: color,
+                        }}
+                    >          
+
+                    {/* {color} */}
+                
+                    </button>
+                );
+              
+              
               })}
             </ul>
         </div>
