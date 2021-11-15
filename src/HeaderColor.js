@@ -12,11 +12,12 @@ function HeaderColor(props) {
   
     // si color no esta seleccionado mandar mensaje de seleccionar color
     useEffect(() => {
+      
       axios.get(`https://www.colr.org/json/colors/random/7`)   
       .then(res => {
       var newcolors =[];
             //añadir los colores a un array
-      for(var i = 0; i < 7; i++){
+      for(var i = 0; i < res.data.colors.length; i++){
         newcolors.push("#"+ res.data.colors[i].hex);
       }
       setColors(newcolors);
@@ -30,8 +31,7 @@ function HeaderColor(props) {
       
     },[]);
       
-
-
+    
 
   const newgame = () =>{
    props.setGridState(props.grid); 
