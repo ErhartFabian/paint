@@ -15,9 +15,7 @@ function HeaderColor(props) {
   
     // si color no esta seleccionado mandar mensaje de seleccionar color
     useEffect(() => {
-      setState("LOADING");
       setTimeout(() => {} , 1000);
-      console.log(state);
       axios.get(`https://www.colr.org/json/colors/random/7`)   
       .then(res => {
       var newcolors =[];
@@ -94,7 +92,7 @@ function HeaderColor(props) {
                    </Box>
                   )
               }
-              else{
+              if(state==="END"){
                 return(
                   <button 
                         key={color}
@@ -115,7 +113,9 @@ function HeaderColor(props) {
                     </button>
                 );
               }
-              
+              else{
+                return(<div key={color}>Error</div>);
+              }
               
               })}
             </ul>
