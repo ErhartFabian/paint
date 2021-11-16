@@ -3,16 +3,21 @@ import React,{useEffect, useState} from 'react';
 import Button from '@mui/material/Button';
 import html2canvas from 'html2canvas';
 import axios from 'axios';
-
+import CircularProgress from '@mui/material/CircularProgress';
+import Box from '@mui/material/Box';
 
 
 function HeaderColor(props) {
 
   var [colors,setColors] = useState([]);
+
+  var [state,setState]=useState("START"); 
   
     // si color no esta seleccionado mandar mensaje de seleccionar color
     useEffect(() => {
-      
+      setState("LOADING");
+      setTimeout(() => {} , 1000);
+      console.log(state);
       axios.get(`https://www.colr.org/json/colors/random/7`)   
       .then(res => {
       var newcolors =[];
@@ -21,13 +26,11 @@ function HeaderColor(props) {
         newcolors.push("#"+ res.data.colors[i].hex);
       }
       setColors(newcolors);
-      
+      setState("END");
       })
       .catch(err   => {
         console.log(err);
       });
-        //mensaje de seleccionar color
-        alert("Selecciona un color");
       
     },[]);
       
@@ -84,7 +87,14 @@ function HeaderColor(props) {
             
               const isSelected = color === props.selectedColor;
               const borderStyle = isSelected ? '5px solid #66abf4':'2px solid #FFFFFF';
-              
+              if(state==="LOADING"){
+                return (
+                  <Box key={color} sx={{ display: 'flex' }}>
+                      <CircularProgress />
+                   </Box>
+                  )
+              }
+              else{
                 return(
                   <button 
                         key={color}
@@ -104,6 +114,7 @@ function HeaderColor(props) {
                 
                     </button>
                 );
+              }
               
               
               })}
