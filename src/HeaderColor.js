@@ -15,7 +15,7 @@ function HeaderColor(props) {
   
     // si color no esta seleccionado mandar mensaje de seleccionar color
     useEffect(() => {
-      setTimeout(() => {} , 1000);
+      setState("LOADING");
       axios.get(`https://www.colr.org/json/colors/random/7`)   
       .then(res => {
       var newcolors =[];
